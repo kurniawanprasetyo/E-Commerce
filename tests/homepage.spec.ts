@@ -18,7 +18,7 @@ test('user can add a product and see it in the cart', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Add Noise Cancelling Headphones to cart' }).click()
   await expect(page.locator('.toast')).toContainText('added to your bag')
-  await page.getByRole('button', { name: 'Cart' }).click()
+  await page.getByRole('button', { name: 'Cart', exact: true }).click()
   await expect(page.getByRole('complementary', { name: 'Shopping cart' })).toBeVisible()
   await expect(page.getByRole('complementary', { name: 'Shopping cart' }).getByText('Noise Cancelling Headphones')).toBeVisible()
   await expect(page.getByRole('complementary', { name: 'Shopping cart' }).getByText('$79.99')).toBeVisible()
